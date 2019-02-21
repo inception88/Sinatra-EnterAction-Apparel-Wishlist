@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/bmabey/database_cleaner.git
+  revision: 4c2408ffdbbd990e78d6590f4ef6ba5e58aca673
+  specs:
+    database_cleaner (1.7.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -71,6 +77,7 @@ PLATFORMS
 DEPENDENCIES
   activerecord (~> 4.2.7.1)
   bcrypt
+  database_cleaner!
   pry
   rake
   require_all

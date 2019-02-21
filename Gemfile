@@ -12,3 +12,4 @@ gem "sqlite3", '1.3.10'
 gem "shotgun"
 gem 'require_all'
 gem "rake"
+gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
