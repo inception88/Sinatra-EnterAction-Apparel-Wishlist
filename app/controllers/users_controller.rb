@@ -6,11 +6,22 @@ class UsersController < ApplicationController
 
   post '/signup' do
     @user = User.create(params[:user])
-    binding.pry
-    redirect '/wishlists'
+    if @user.save
+      session[:id] = @user.id
+      redirect '/welcome'
+    else
+      redirect '/signup'
+    end
   end
 
-  get '/users' do
-    erb :'users/show'
+  get '/welcome' do
+    binding.pry
+    @user = current_user
+    erb :'users/welcome'
+  end
+
+  get '/logout' do
+    session.clear
+    redirect '/'
   end
 end
