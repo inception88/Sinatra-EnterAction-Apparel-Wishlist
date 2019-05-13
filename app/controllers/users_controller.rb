@@ -18,7 +18,7 @@ class UsersController < ApplicationController
     if !logged_in?
       erb :'/users/login'
     else
-      redirect '/show'
+      redirect '/welcome'
     end
   end
 
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
       session[:id] = @user.id
-      redirect '/show'
+      redirect '/wishlists'
     else
       redirect '/login'
     end
