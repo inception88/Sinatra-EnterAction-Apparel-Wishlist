@@ -1,7 +1,12 @@
 class WishlistsController < ApplicationController
 
   get '/wishlists' do
-    erb :'/wishlists/show'
+    if logged_in?
+      @user = current_user
+      erb :'/wishlists/show'
+    else
+      redirect '/login'
+    end
   end
 
   get '/wishlists/new' do
