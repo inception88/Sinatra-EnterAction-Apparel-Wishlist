@@ -14,8 +14,25 @@ class UsersController < ApplicationController
     end
   end
 
+  get '/login' do
+    if !logged_in?
+      erb :'/users/login'
+    else
+      redirect '/show'
+    end
+  end
+
+  post '/login' do
+    @user = User.find_by(email: params[:email])
+    if @user && @user.authenticate(params[:password])
+      session[:id] = @user.id
+      redirect '/show'
+    else
+      redirect '/login'
+    end
+  end
+
   get '/welcome' do
-    binding.pry
     @user = current_user
     erb :'users/welcome'
   end
