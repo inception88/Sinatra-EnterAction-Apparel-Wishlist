@@ -1,5 +1,5 @@
 <h1> Welcome, <%=@user.name%>!</h1>
-<%Wishlist.all.each_with_index do |list, i|%>
-<%="#{i}. #{list.name}"%><br>
+<%@user.wishlists.all.each_with_index do |list, i|%>
+<%="#{i+1}. #{list.name}"%><br>
 <%end%>
 <a href="/wishlists/new">Create A Wishlist</a>
