@@ -28,4 +28,14 @@ class WishlistsController < ApplicationController
     end
   end
 
+  get '/wishlists/:id' do
+    if logged_in?
+      @user = current_user
+      @wishlist = @user.wishlists.find(params[:id])
+      erb :'/wishlists/products'
+    else
+      redirect '/login'
+    end
+  end
+
 end
