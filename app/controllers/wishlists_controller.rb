@@ -17,4 +17,15 @@ class WishlistsController < ApplicationController
     end
   end
 
+  post '/wishlists' do
+    @user = current_user
+    if params[:name] != ""
+      @user.wishlists << Wishlist.create(name: params[:name])
+      @user.save
+      redirect '/wishlists'
+    else
+      redirect '/wishlist/new'
+    end
+  end
+
 end
