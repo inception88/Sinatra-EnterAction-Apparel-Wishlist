@@ -1,4 +1,4 @@
 <h1>Take a Look at all the Wonderful Products</h1>
-<%=Product.all.each_with_index do |product, i|%>
+<%Product.all.each_with_index do |product, i|%>
 <a href="/products/<%=product.id%>"><%="#{i+1}. #{product.name}"%><br></a>
 <%end%><br>
