@@ -1,1 +1,1 @@
-Product.create(name: "U'SPINN T-Shirt")
+Product.create(name: "U'SPINN T-Shirt", image: "https://i.imgur.com/Jt6zt7Y.jpg", url: "https://enteractionapparel.com/products/the-original-uspinn", description: "The  Original U'SPINN! A Fully composite T-Shirt with a  3D printed spinnable bottle and Drinking Game .... (Drinks not included)", price: 34.95)
