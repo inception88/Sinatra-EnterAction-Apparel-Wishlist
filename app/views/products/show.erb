@@ -1,0 +1,3 @@
+<%=Product.all.each_with_index do |product, i|%>
+<a href="/products/<%=product.id%>"><%="#{i+1}. #{product.name}"%><br></a>
+<%end%><br>
