@@ -14,4 +14,16 @@ class ProductsController < ApplicationController
     end
   end
 
+  patch '/products/:id' do
+    if logged_in?
+      @user = current_user
+      @product = Product.find(params[:id])
+      @wishlist = Wishlist.find(params[:list][:wishlists_ids])
+      @wishlist.products << @product
+      redirect "/wishlists/#{@wishlist.id}"
+    else
+      redirect '/login'
+    end
+  end
+
 end

@@ -1,5 +1,14 @@
 <h1><%=@product.name%></h1><br>
 <img src="<%=@product.image%>"><br>
+<form method="POST" action="/products/<%=@product.id%>">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <h2>Wishlists</h2>
+<%@user.wishlists.all.each do |list|%>
+  <input type="radio" name="list[wishlists_ids]" value="<%=list.id%>" id="<%="wishlist_#{list.id}"%>"><%="#{list.name}"%></input>
+  <br>
+<%end%>
+<input type="submit" value="Add to Wishlist">
+</form>
 <p><%=@product.description%></p>
 <p><%=@product.price%></p>
 <a href="<%=@product.url%>"><%=@product.url%></a><br>

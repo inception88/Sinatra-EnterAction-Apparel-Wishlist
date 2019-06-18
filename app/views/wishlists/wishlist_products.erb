@@ -1,2 +1,5 @@
 <h1><%=@wishlist.name%></h1>
+<%@wishlist.products.all.each_with_index do |product, i|%>
+<a href="/products/<%=product.id%>"><%="#{i+1}. #{product.name}"%><br></a>
+<%end%><br>
 <a href="/wishlists">Back To Wishlists</a>
