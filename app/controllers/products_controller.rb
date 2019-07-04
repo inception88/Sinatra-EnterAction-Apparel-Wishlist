@@ -22,8 +22,7 @@ class ProductsController < ApplicationController
         redirect "/products/#{params[:id]}"
       else
         @wishlist = Wishlist.find(params[:list][:wishlists_ids])
-        if @wishlist.products.include?(@product)
-        else
+        if !@wishlist.products.include?(@product)
           @wishlist.products << @product
         end
         redirect "/wishlists/#{@wishlist.id}"
