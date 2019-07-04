@@ -1,7 +1,11 @@
 <h1><%=@wishlist.name%></h1>
 <%@wishlist.products.all.each_with_index do |product, i|%>
-<a href="/products/<%=product.id%>"><%="#{i+1}. #{product.name}"%><br></a>
-<%end%><br>
+<a href="/products/<%=product.id%>"><%="#{i+1}. #{product.name}"%></a>
+<form method="post" action="/wishlists/<%=@wishlist.id%>/<%=product.id%>">
+  <input id="hidden" type="hidden" name="_method" value="patch">
+  <input type="submit" value="Delete Product" id="submit">
+</form>
+<%end%>
 <form method="post" action="/wishlists/<%=@wishlist.id%>">
   <input id="hidden" type="hidden" name="_method" value="delete">
   <input type="submit" value="Delete Wishlist" id="submit">

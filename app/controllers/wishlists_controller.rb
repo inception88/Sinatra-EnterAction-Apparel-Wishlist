@@ -38,6 +38,16 @@ class WishlistsController < ApplicationController
     end
   end
 
+  patch '/wishlists/:id/:product' do
+    @wishlist = Wishlist.find(params[:id])
+    binding.pry
+    if params[:product] != nil
+      @wishlist.products.delete(Product.find(params[:product]))
+      @wishlist.save
+    end
+    redirect "/wishlists/#{@wishlist.id}"
+  end
+
   delete '/wishlists/:id' do
     @user = current_user
     @wishlist = Wishlist.find(params[:id])
