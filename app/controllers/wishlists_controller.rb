@@ -38,4 +38,12 @@ class WishlistsController < ApplicationController
     end
   end
 
+  delete '/wishlists/:id' do
+    @user = current_user
+    @wishlist = Wishlist.find(params[:id])
+    if @user.wishlists.include?(@wishlist)
+      @wishlist.delete
+    end
+      redirect "/wishlists"
+  end
 end

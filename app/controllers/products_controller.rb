@@ -22,12 +22,11 @@ class ProductsController < ApplicationController
         redirect "/products/#{params[:id]}"
       else
         @wishlist = Wishlist.find(params[:list][:wishlists_ids])
-        if @wishlist.products.find(params[:id]) != nil
-          redirect "/wishlists/#{@wishlist.id}"
+        if @wishlist.products.include?(@product)
         else
           @wishlist.products << @product
-          redirect "/wishlists/#{@wishlist.id}"
         end
+        redirect "/wishlists/#{@wishlist.id}"
       end
     else
       redirect '/login'
