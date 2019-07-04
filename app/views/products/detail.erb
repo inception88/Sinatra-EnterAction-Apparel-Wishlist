@@ -1,5 +1,7 @@
 <h1><%=@product.name%></h1><br>
 <img src="<%=@product.image%>"><br>
+<p><%=@product.description%></p>
+<p>Price: $<%=@product.price%></p>
 <form method="POST" action="/products/<%=@product.id%>">
   <input id="hidden" type="hidden" name="_method" value="patch">
   <h2>Wishlists</h2>
@@ -9,7 +11,5 @@
 <%end%>
 <input type="submit" value="Add to Wishlist">
 </form>
-<p><%=@product.description%></p>
-<p>Price: $<%=@product.price%></p>
-<a href="<%=@product.url%>"><%=@product.url%></a><br>
+<a href="<%=@product.url%>"><%=@product.url%></a><br><br>
 <a href="/products">Back To Products</a>
