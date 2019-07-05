@@ -7,13 +7,13 @@ This is a Sinatra based application using products from www.enteractionapparel.c
 Copy the code below to use git clone to clone the repository.
 
 ```ruby
-git clone git@github.com:inception88/Sinatra-EnterAction-Apparel-Wishlist.git
+$ git clone git@github.com:inception88/Sinatra-EnterAction-Apparel-Wishlist.git
 ```
 
 Go into the project directory:
 
 ```ruby
-cd Sinatra-EnterAction-Apparel-Wishlist
+$ cd Sinatra-EnterAction-Apparel-Wishlist
 ```
 
 And then execute:
