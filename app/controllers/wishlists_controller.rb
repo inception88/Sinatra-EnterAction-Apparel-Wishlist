@@ -40,7 +40,6 @@ class WishlistsController < ApplicationController
 
   patch '/wishlists/:id/:product' do
     @wishlist = Wishlist.find(params[:id])
-    binding.pry
     if params[:product] != nil
       @wishlist.products.delete(Product.find(params[:product]))
       @wishlist.save
