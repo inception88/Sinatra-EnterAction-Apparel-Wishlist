@@ -24,7 +24,7 @@ class WishlistsController < ApplicationController
       @user.save
       redirect '/wishlists'
     else
-      redirect '/wishlist/new'
+      redirect '/wishlists/new'
     end
   end
 
