@@ -5,12 +5,14 @@ class UsersController < ApplicationController
   end
 
   post '/signup' do
-    @user = User.create(params[:user])
-    if @user.save
-      session[:id] = @user.id
-      redirect '/welcome'
-    else
+    if User.find_by(email: params[:user][:email])
       redirect '/signup'
+    else
+      @user = User.create(params[:user])
+      if @user.save
+        session[:id] = @user.id
+        redirect '/welcome'
+      end
     end
   end
 
