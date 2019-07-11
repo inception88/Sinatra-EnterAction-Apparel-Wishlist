@@ -43,17 +43,22 @@ class WishlistsController < ApplicationController
   end
 
   patch '/wishlists/:id/:product' do
-    @wishlist = Wishlist.find(params[:id])
-    if params[:product] != nil
-      @wishlist.products.delete(Product.find(params[:product]))
-      @wishlist.save
+    @user = current_user
+    @wishlist = @user.wishlists.find_by(id: params[:id])
+    if @wishlist != nil
+      if params[:product] != nil
+        @wishlist.products.delete(Product.find(params[:product]))
+        @wishlist.save
+      end
+    else
+      redirect '/wishlists'
     end
     redirect "/wishlists/#{@wishlist.id}"
   end
 
   delete '/wishlists/:id' do
     @user = current_user
-    @wishlist = Wishlist.find(params[:id])
+    @wishlist = Wishlist.find_by(id: params[:id])
     if @user.wishlists.include?(@wishlist)
       @wishlist.delete
     end
