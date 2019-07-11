@@ -7,8 +7,12 @@ class ProductsController < ApplicationController
   get '/products/:id' do
     if logged_in?
       @user = current_user
-      @product = Product.find(params[:id])
-      erb :'/products/detail'
+      @product = Product.find_by(id: params[:id])
+      if @product != nil
+        erb :'/products/detail'
+      else
+        redirect '/products'
+      end
     else
       redirect '/login'
     end
@@ -17,7 +21,7 @@ class ProductsController < ApplicationController
   patch '/products/:id' do
     if logged_in?
       @user = current_user
-      @product = Product.find(params[:id])
+      @product = Product.find_by(id: params[:id])
       if params[:list] == nil
         redirect "/products/#{params[:id]}"
       else
