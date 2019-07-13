@@ -13,11 +13,25 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
-  def current_user
-    User.find(session[:id])
-  end
+  helpers do
+    def current_user
+      @user ||= User.find(session[:id])
+    end
 
-  def logged_in?
-    session[:id] != nil
+    def logged_in?
+      session[:id] != nil
+    end
+
+    def redirect_if_not_logged_in
+      if !logged_in?
+        redirect '/login'
+      end
+    end
+
+    def redirect_if_no_wishlist
+      if @wishlist == nil
+        redirect '/wishlists'
+      end
+    end
   end
 end

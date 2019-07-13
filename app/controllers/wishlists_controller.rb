@@ -1,20 +1,14 @@
 class WishlistsController < ApplicationController
 
   get '/wishlists' do
-    if logged_in?
-      @user = current_user
-      erb :'/wishlists/show'
-    else
-      redirect '/login'
-    end
+    redirect_if_not_logged_in
+    @user = current_user
+    erb :'/wishlists/show'
   end
 
   get '/wishlists/new' do
-    if logged_in?
-      erb :'/wishlists/new'
-    else
-      redirect '/login'
-    end
+    redirect_if_not_logged_in
+    erb :'/wishlists/new'
   end
 
   post '/wishlists' do
@@ -29,17 +23,11 @@ class WishlistsController < ApplicationController
   end
 
   get '/wishlists/:id' do
-    if logged_in?
-      @user = current_user
-      @wishlist = @user.wishlists.find_by(id: params[:id])
-      if @wishlist != nil
-        erb :'/wishlists/wishlist_products'
-      else
-        redirect '/wishlists'
-      end
-    else
-      redirect '/login'
-    end
+    redirect_if_not_logged_in
+    @user = current_user
+    @wishlist = @user.wishlists.find_by(id: params[:id])
+    redirect_if_no_wishlist
+    erb :'/wishlists/wishlist_products'
   end
 
   patch '/wishlists/:id/:product' do
