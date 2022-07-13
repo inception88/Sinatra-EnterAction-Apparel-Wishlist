@@ -3,7 +3,7 @@ source "https://rubygems.org"
 # git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
 gem "sinatra"
-gem "activerecord", '~>4.2.7.1', :require => 'active_record'
+gem "activerecord", '~>5.2.8.1', :require => 'active_record'
 gem 'sinatra-activerecord'
 gem "bcrypt"
 gem "pry"
